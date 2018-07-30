@@ -1,3 +1,6 @@
 [submodule "src/github.com/wernerd/GoRTP"]
 	path = src/github.com/wernerd/GoRTP
 	url = https://github.com/wernerd/GoRTP
+[submodule "src/github.com/golang/protobuf"]
+	path = src/github.com/golang/protobuf
+	url = https://github.com/golang/protobuf
