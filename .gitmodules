@@ -4,3 +4,6 @@
 [submodule "src/github.com/golang/protobuf"]
 	path = src/github.com/golang/protobuf
 	url = https://github.com/golang/protobuf
+[submodule "src/github.com/cihub/seelog"]
+	path = src/github.com/cihub/seelog
+	url = https://github.com/cihub/seelog
