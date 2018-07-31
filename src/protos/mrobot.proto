@@ -1,0 +1,38 @@
+syntax = "proto2";
+
+package protos;
+
+message MediaChannel {
+    required string ip = 1;
+    required int32 port = 2;
+    required int32 ptype = 3;
+}
+
+message MRobotAllocRequest {
+    required int32 ptype = 1;
+    required string callid = 2;
+}
+
+message MRobotAllocResponse {
+    enum ERROR_CODE {
+        SUCCESS  = 0; 
+    } 
+
+    required int32 code = 1;
+    required string errmsg = 2;
+    required string callid = 3;
+    required MediaChannel amedia = 4;
+}
+
+message MRobotFreeRequest {
+    required string callid = 1;
+}
+
+message MRobotFreeResponse {
+    enum ERROR_CODE {
+        SUCCESS  = 0; 
+    } 
+
+    required int32 code = 1;
+    required string errmsg = 2;
+}
