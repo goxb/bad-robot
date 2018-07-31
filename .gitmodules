@@ -7,3 +7,6 @@
 [submodule "src/github.com/cihub/seelog"]
 	path = src/github.com/cihub/seelog
 	url = https://github.com/cihub/seelog
+[submodule "src/github.com/smallnest/rpcx"]
+	path = src/github.com/smallnest/rpcx
+	url = https://github.com/smallnest/rpcx
