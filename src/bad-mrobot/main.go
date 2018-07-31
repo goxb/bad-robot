@@ -56,6 +56,8 @@ func main() {
 		return
 	}
 
-	log.InitLog(dbglevel, logfile)
+	log.InitLog(
+		dbglevel, logfile)
+
 	service.RunRpcService(srv)
 }
