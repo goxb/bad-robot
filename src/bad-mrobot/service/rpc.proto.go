@@ -9,6 +9,19 @@ import (
 
 type MRobotRpcProtoMod protos.MRobotRpcProtoMod
 
+func (m *MRobotRpcProtoMod) RpcCall_MRobotFreeRequest(
+	ctx context.Context,
+	req *protos.MRobotFreeRequest,
+	rsp *protos.MRobotFreeResponse) error {
+
+	rsp.Code = protos.SUCCESS
+	rsp.Errmsg = "success"
+	rsp.Callid = req.Callid
+
+	fmt.Printf("client request: %+v\n", req)
+	return nil
+}
+
 func (m *MRobotRpcProtoMod) RpcCall_MRobotAllocRequest(
 	ctx context.Context,
 	req *protos.MRobotAllocRequest,

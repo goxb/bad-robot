@@ -15,6 +15,14 @@ type MediaChannel struct {
 	Ptype int32
 }
 
+type MRobotFreeRequest struct {
+	Callid string
+}
+
+type MRobotFreeResponse struct {
+	Response
+}
+
 type MRobotAllocRequest struct {
 	Ptype  int32
 	Callid string
@@ -24,12 +32,4 @@ type MRobotAllocResponse struct {
 	Response
 	Callid string
 	Amedia MediaChannel
-}
-
-type MRobotFreeRequest struct {
-	Callid string
-}
-
-type MRobotFreeResponse struct {
-	Response
 }
