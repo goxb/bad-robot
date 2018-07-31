@@ -10,3 +10,30 @@
 [submodule "src/github.com/smallnest/rpcx"]
 	path = src/github.com/smallnest/rpcx
 	url = https://github.com/smallnest/rpcx
+[submodule "src/git.apache.org/thrift.git"]
+	path = src/git.apache.org/thrift.git
+	url = https://github.com/apache/thrift
+[submodule "src/github.com/fatih/color"]
+	path = src/github.com/fatih/color
+	url = https://github.com/fatih/color
+[submodule "src/github.com/gogo/protobuf"]
+	path = src/github.com/gogo/protobuf
+	url = https://github.com/gogo/protobuf
+[submodule "src/github.com/julienschmidt/httprouter"]
+	path = src/github.com/julienschmidt/httprouter
+	url = https://github.com/julienschmidt/httprouter
+[submodule "src/github.com/kavu/go_reuseport"]
+	path = src/github.com/kavu/go_reuseport
+	url = https://github.com/kavu/go_reuseport
+[submodule "src/github.com/soheilhy/cmux"]
+	path = src/github.com/soheilhy/cmux
+	url = https://github.com/soheilhy/cmux
+[submodule "src/github.com/vmihailenco/msgpack"]
+	path = src/github.com/vmihailenco/msgpack
+	url = https://github.com/vmihailenco/msgpack
+[submodule "src/golang.org/x/net"]
+	path = src/golang.org/x/net
+	url = https://github.com/golang/net
+[submodule "src/golang.org/x/text"]
+	path = src/golang.org/x/text
+	url = https://github.com/golang/text
