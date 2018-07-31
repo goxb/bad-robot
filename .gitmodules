@@ -37,3 +37,27 @@
 [submodule "src/golang.org/x/text"]
 	path = src/golang.org/x/text
 	url = https://github.com/golang/text
+[submodule "src/github.com/grandcat/zeroconf"]
+	path = src/github.com/grandcat/zeroconf
+	url = https://github.com/grandcat/zeroconf
+[submodule "src/github.com/hashicorp/go-multierror"]
+	path = src/github.com/hashicorp/go-multierror
+	url = https://github.com/hashicorp/go-multierror
+[submodule "src/github.com/rubyist/circuitbreaker"]
+	path = src/github.com/rubyist/circuitbreaker
+	url = https://github.com/rubyist/circuitbreaker
+[submodule "src/github.com/valyala/fastrand"]
+	path = src/github.com/valyala/fastrand
+	url = https://github.com/valyala/fastrand
+[submodule "src/github.com/cenk/backoff"]
+	path = src/github.com/cenk/backoff
+	url = https://github.com/cenk/backoff
+[submodule "src/github.com/cenkalti/backoff"]
+	path = src/github.com/cenkalti/backoff
+	url = https://github.com/cenkalti/backoff
+[submodule "src/github.com/facebookgo/clock"]
+	path = src/github.com/facebookgo/clock
+	url = https://github.com/facebookgo/clock
+[submodule "src/github.com/miekg/dns"]
+	path = src/github.com/miekg/dns
+	url = https://github.com/miekg/dns
