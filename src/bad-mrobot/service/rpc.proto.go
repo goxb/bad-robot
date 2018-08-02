@@ -70,7 +70,6 @@ func (m *MRobotRpcProtoMod) RpcCall_MRobotAllocRequest(
 		seelog.Errorf(rsp.Errmsg)
 	}
 
-	seelog.Infof("session %p", s)
 	s.SetPayloadType(req.Ptype)
 	if err := s.Init(); err != nil {
 		rsp.Errmsg = fmt.Sprintf(
@@ -117,7 +116,6 @@ func (m *MRobotRpcProtoMod) RpcCall_MRobotSetRomoteRequest(
 		return nil
 	}
 
-	seelog.Infof("session %p", s)
 	s.AddRemote(req.RtpRobot, req.RtpRemote)
 	return nil
 }

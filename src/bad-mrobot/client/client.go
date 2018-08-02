@@ -40,9 +40,9 @@ func main() {
 		log.Printf("server response %+v", reply)
 
 		req := &protos.MRobotSetRomoteRequest{
-			Callid: callid,
-			IpAddr: "127.0.0.1",
-			Port:   int32(20000),
+			Callid:    callid,
+			RtpRobot:  "127.0.0.1:20000",
+			RtpRemote: "127.0.0.1:40000",
 		}
 
 		rsp := &protos.MRobotSetRemoteResponse{}

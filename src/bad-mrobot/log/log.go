@@ -5,7 +5,60 @@ import (
 	"path"
 
 	"github.com/cihub/seelog"
+	"github.com/smallnest/rpcx/log"
 )
+
+type rpcxLogger struct {
+	logger seelog.LoggerInterface
+}
+
+func (l *rpcxLogger) Debug(v ...interface{}) {
+	l.logger.Debug(v...)
+}
+
+func (l *rpcxLogger) Debugf(format string, v ...interface{}) {
+	l.logger.Debugf(format, v...)
+}
+
+func (l *rpcxLogger) Info(v ...interface{}) {
+	l.logger.Info(v...)
+}
+
+func (l *rpcxLogger) Infof(format string, v ...interface{}) {
+	l.logger.Infof(format, v...)
+}
+
+func (l *rpcxLogger) Warn(v ...interface{}) {
+	l.logger.Warn(v...)
+}
+
+func (l *rpcxLogger) Warnf(format string, v ...interface{}) {
+	l.logger.Warnf(format, v...)
+}
+
+func (l *rpcxLogger) Error(v ...interface{}) {
+	l.logger.Error(v...)
+}
+
+func (l *rpcxLogger) Errorf(format string, v ...interface{}) {
+	l.logger.Errorf(format, v...)
+}
+
+func (l *rpcxLogger) Fatal(v ...interface{}) {
+	l.logger.Error(v...)
+}
+
+func (l *rpcxLogger) Fatalf(format string, v ...interface{}) {
+	l.logger.Errorf(format, v...)
+}
+
+func (l *rpcxLogger) Panic(v ...interface{}) {
+	l.logger.Critical(v...)
+}
+
+func (l *rpcxLogger) Panicf(format string, v ...interface{}) {
+	l.logger.Criticalf(format, v...)
+}
 
 func InitLog(loglevel string, logfile string) int {
 	tostdflag := false
@@ -34,6 +87,10 @@ func InitLog(loglevel string, logfile string) int {
 		fmt.Println("err parsing config:", err)
 		return -1
 	}
+
+	log.SetLogger(&rpcxLogger{
+		logger: logger,
+	})
 
 	seelog.ReplaceLogger(logger)
 	return 0
