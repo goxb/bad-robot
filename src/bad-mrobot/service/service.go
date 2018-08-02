@@ -11,12 +11,16 @@ type RpcService struct {
 
 var gRpcService *RpcService
 
-func (s *RpcService) Run() error {
+func (s *RpcService) reg(rcvr interface{}) {
+	s.rpcxsrv.Register(rcvr, "")
+}
+
+func (s *RpcService) run() error {
 	return s.rpcxsrv.Serve("tcp", s.address)
 }
 
 func (s *RpcService) register() {
-	s.rpcxsrv.Register(new(MRobotRpcProtoMod), "")
+	s.reg(new(MRobotRpcProtoMod))
 }
 
 func RunRpcService(address string) error {
@@ -26,5 +30,5 @@ func RunRpcService(address string) error {
 	}
 
 	gRpcService.register()
-	return gRpcService.Run()
+	return gRpcService.run()
 }

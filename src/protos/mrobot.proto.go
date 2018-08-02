@@ -1,7 +1,8 @@
 package protos
 
 const (
-	SUCCESS = 0
+	SUCCESS     = 0
+	SUCCESS_MSG = "success"
 )
 
 type Response struct {
@@ -10,9 +11,9 @@ type Response struct {
 }
 
 type MediaChannel struct {
-	Ip    string
-	Port  int32
-	Ptype int32
+	Ptype     int32
+	RtpRobot  string
+	RtcpRobot string
 }
 
 type MRobotFreeRequest struct {
@@ -21,6 +22,7 @@ type MRobotFreeRequest struct {
 
 type MRobotFreeResponse struct {
 	Response
+	Callid string
 }
 
 type MRobotAllocRequest struct {
@@ -32,4 +34,15 @@ type MRobotAllocResponse struct {
 	Response
 	Callid string
 	Amedia MediaChannel
+}
+
+type MRobotSetRomoteRequest struct {
+	Callid    string
+	RtpRobot  string
+	RtpRemote string
+}
+
+type MRobotSetRemoteResponse struct {
+	Response
+	Callid string
 }

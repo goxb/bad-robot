@@ -6,16 +6,19 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/cihub/seelog"
+
+	"bad-mrobot/config"
 	"bad-mrobot/log"
 	"bad-mrobot/service"
 )
 
-// 实际中应该用更好的变量名
 var (
 	help bool
 
 	beg int
 	end int
+	rtp string
 	srv string
 	cfg string
 
@@ -28,7 +31,8 @@ func init() {
 
 	flag.IntVar(&beg, "beg", 20000, "beg udp port")
 	flag.IntVar(&end, "end", 65535, "end udp port")
-	flag.StringVar(&srv, "srv", "127.0.0.1:3345", "tcp address")
+	flag.StringVar(&rtp, "rtp", "127.0.0.1", "rtp wan address")
+	flag.StringVar(&srv, "srv", "127.0.0.1:3345", "tcp service address")
 	flag.StringVar(&cfg, "cfg", "etc/bad-mrobot.conf", "set config file")
 	flag.StringVar(&logfile, "log", "log/bad-mrobot.log", "set log file")
 	flag.StringVar(&dbglevel, "dbg", "debug", "debug level: debug info warn error")
@@ -40,7 +44,6 @@ func init() {
 func usage() {
 	command := filepath.Base(os.Args[0])
 	fmt.Fprintf(os.Stderr, `%s
-Usage: %s [-cfg filename]
 Usage: %s [-srv address] [-beg port] [-end port] [-dbg debug] [-log file]
 
 Options:
@@ -59,5 +62,9 @@ func main() {
 	log.InitLog(
 		dbglevel, logfile)
 
-	service.RunRpcService(srv)
+	defer seelog.Flush()
+
+	config.RtpIpAddr = rtp
+	err := service.RunRpcService(srv)
+	seelog.Infof("RunRpcService %s", err)
 }

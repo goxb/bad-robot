@@ -1,5 +1,7 @@
 package session
 
+import "bad-mrobot/config"
+
 var gUdpPort int = 20000
 
 func GetZone() string {
@@ -12,5 +14,5 @@ func GetFreeUdpPort() int {
 }
 
 func GetWanIpAddress() string {
-	return "127.0.0.1"
+	return config.RtpIpAddr
 }
