@@ -60,8 +60,8 @@ func main() {
 		if err != nil {
 			log.Fatalf("failed to call: %v", err)
 		}
-
 		log.Printf("server response %+v", rsp2)
+
 		time.Sleep(1e9)
 	}
 }
