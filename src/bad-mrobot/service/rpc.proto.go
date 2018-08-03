@@ -59,32 +59,40 @@ func (m *MRobotRpcProtoMod) RpcCall_MRobotAllocRequest(
 	rsp.Callid = req.Callid
 
 	s := session.GetSession(req.Callid)
-	if s == nil {
-		s = session.CreateSession(req.Callid)
+	if s != nil {
+		goto success
 	}
 
+	s = session.CreateSession(req.Callid)
 	if s == nil {
 		rsp.Code = -1
 		rsp.Errmsg = fmt.Sprintf(
 			"create session error %s", req.Callid)
 		seelog.Errorf(rsp.Errmsg)
+		goto failure
 	}
 
 	s.SetPayloadType(req.Ptype)
 	if err := s.Init(); err != nil {
 		rsp.Errmsg = fmt.Sprintf(
 			"init session error %s", req.Callid)
-		session.DestroySession(req.Callid)
 		seelog.Errorf(rsp.Errmsg)
-		return nil
+		goto failure
 	}
 
 	s.Start()
+
+success:
 	rsp.Amedia.Ptype = req.Ptype
 	rsp.Amedia.RtpRobot = fmt.Sprintf("%s:%d",
 		s.RtpRobot2.IpAddr.String(), s.RtpRobot2.DataPort)
 	rsp.Amedia.RtcpRobot = fmt.Sprintf("%s:%d",
 		s.RtpRobot2.IpAddr.String(), s.RtpRobot2.CtrlPort)
+	seelog.Debugf("allocate session %p", s)
+	return nil
+
+failure:
+	session.DestroySession(req.Callid)
 	return nil
 }
 
@@ -117,5 +125,6 @@ func (m *MRobotRpcProtoMod) RpcCall_MRobotSetRomoteRequest(
 	}
 
 	s.AddRemote(req.RtpRobot, req.RtpRemote)
+	seelog.Debugf("set remote session %p", s)
 	return nil
 }

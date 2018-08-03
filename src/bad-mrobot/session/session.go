@@ -88,7 +88,7 @@ func (this *RobotSession) AddRemote(robot, remote string) error {
 	this.lock.Lock()
 	defer this.lock.Unlock()
 
-	if _, ok := this.remoteMap[robot]; !ok {
+	if _, ok := this.remoteMap[remote]; !ok {
 		this.session.AddRemote(
 			&rtp.Address{
 				IpAddr:   addr.IP,
@@ -97,10 +97,11 @@ func (this *RobotSession) AddRemote(robot, remote string) error {
 				Zone:     GetZone(),
 			})
 
-		this.remoteMap[robot] = remote
-		seelog.Errorf("add %s remote %s", robot, remote)
+		this.remoteMap[remote] = robot
+		seelog.Infof("add %s remote %s", robot, remote)
 	}
 
+	seelog.Debugf("remoteMap size %d", len(this.remoteMap))
 	return nil
 }
 

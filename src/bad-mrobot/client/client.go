@@ -36,7 +36,6 @@ func main() {
 		if err != nil {
 			log.Fatalf("failed to call: %v", err)
 		}
-
 		log.Printf("server response %+v", reply)
 
 		req := &protos.MRobotSetRomoteRequest{
@@ -44,15 +43,25 @@ func main() {
 			RtpRobot:  "127.0.0.1:20000",
 			RtpRemote: "127.0.0.1:40000",
 		}
-
 		rsp := &protos.MRobotSetRemoteResponse{}
 		err = xclient.Call(context.Background(),
 			"RpcCall_MRobotSetRomoteRequest", req, rsp)
 		if err != nil {
 			log.Fatalf("failed to call: %v", err)
 		}
-
 		log.Printf("server response %+v", rsp)
+
+		req2 := &protos.MRobotFreeRequest{
+			Callid: callid,
+		}
+		rsp2 := &protos.MRobotFreeResponse{}
+		err = xclient.Call(context.Background(),
+			"RpcCall_MRobotFreeRequest", req2, rsp2)
+		if err != nil {
+			log.Fatalf("failed to call: %v", err)
+		}
+
+		log.Printf("server response %+v", rsp2)
 		time.Sleep(1e9)
 	}
 }
